@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Informed Patient Co.</title>
+  <title>The Informed Patient Co. | Endo Patient Education & Navigation</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -18,7 +18,6 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -30,7 +29,6 @@
       overflow-x: hidden;
     }
 
-    /* ── noise overlay ── */
     body::before {
       content: '';
       position: fixed;
@@ -41,295 +39,102 @@
       z-index: 0;
     }
 
-    /* ── glow orbs ── */
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(120px);
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.18;
-    }
+    .orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; opacity: 0.15; }
     .orb-1 { width: 600px; height: 600px; background: var(--bg2); top: -200px; left: -200px; }
     .orb-2 { width: 400px; height: 400px; background: #5b1a3a; bottom: -100px; right: -100px; }
-    .orb-3 { width: 300px; height: 300px; background: var(--purple); top: 40%; left: 60%; opacity: 0.08; }
+    .orb-3 { width: 300px; height: 300px; background: var(--purple); top: 40%; left: 60%; opacity: 0.07; }
 
-    /* ── layout ── */
-    .wrapper {
-      position: relative;
-      z-index: 1;
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
+    .wrapper { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; padding: 0 2rem; }
 
-    /* ── nav bar ── */
-    nav {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 2rem 0 3rem;
-      opacity: 0;
-      animation: fadeUp 0.6s ease forwards;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; opacity: 0; animation: fadeUp 0.6s ease forwards; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo svg { width: 36px; height: 36px; flex-shrink: 0; }
+    .nav-wordmark { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700; color: var(--purple-lt); letter-spacing: 0.02em; line-height: 1.3; }
+    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-link { font-size: 12px; color: var(--muted); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-link:hover { color: var(--purple-lt); }
+    .nav-cta { font-size: 12px; color: var(--pink-lt); text-decoration: none; border: 0.5px solid rgba(237,147,177,0.4); padding: 7px 16px; border-radius: 20px; transition: all 0.2s; letter-spacing: 0.04em; }
+    .nav-cta:hover { background: rgba(237,147,177,0.1); border-color: var(--pink); }
 
-    .nav-wordmark {
-      font-family: 'Playfair Display', serif;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--purple-lt);
-      letter-spacing: 0.02em;
-      line-height: 1.3;
-    }
+    .hero { padding: 4rem 0 3rem; opacity: 0; animation: fadeUp 0.6s ease 0.1s forwards; }
+    .eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink); margin-bottom: 1.5rem; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 6vw, 3.6rem); font-weight: 700; line-height: 1.15; color: var(--purple-lt); margin-bottom: 1.5rem; }
+    h1 em { font-style: italic; color: var(--pink-lt); }
+    .hero-sub { font-size: clamp(1rem, 2.5vw, 1.1rem); line-height: 1.8; color: var(--muted); max-width: 560px; margin-bottom: 2.5rem; }
+    .hero-sub strong { color: var(--text); font-weight: 500; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
-    .nav-ig {
-      font-size: 12px;
-      color: var(--muted);
-      text-decoration: none;
-      border: 0.5px solid rgba(127,119,221,0.3);
-      padding: 6px 14px;
-      border-radius: 20px;
-      transition: all 0.2s;
-      letter-spacing: 0.04em;
-    }
-    .nav-ig:hover { color: var(--purple-lt); border-color: var(--purple); }
+    .btn-primary { background: linear-gradient(135deg, var(--purple), #5b52c4); border: none; border-radius: 10px; padding: 14px 28px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: #fff; cursor: pointer; letter-spacing: 0.04em; text-decoration: none; transition: opacity 0.2s, transform 0.15s; display: inline-block; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-secondary { background: transparent; border: 0.5px solid rgba(127,119,221,0.4); border-radius: 10px; padding: 14px 28px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 400; color: var(--purple-lt); cursor: pointer; letter-spacing: 0.04em; text-decoration: none; transition: all 0.2s; display: inline-block; }
+    .btn-secondary:hover { border-color: var(--purple); background: rgba(127,119,221,0.08); }
 
-    /* ── hero ── */
-    .hero {
-      text-align: center;
-      padding: 2rem 0 3.5rem;
-      width: 100%;
-    }
+    .divider { width: 48px; height: 1.5px; background: linear-gradient(90deg, var(--purple), var(--pink)); border-radius: 2px; margin: 3rem 0; }
 
-    .eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--pink);
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.15s forwards;
-    }
+    .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pink); margin-bottom: 1rem; }
+    h2.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; color: var(--purple-lt); margin-bottom: 1rem; line-height: 1.3; }
+    h2.section-title em { font-style: italic; color: var(--pink-lt); }
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 6vw, 3.8rem);
-      font-weight: 700;
-      line-height: 1.15;
-      color: var(--purple-lt);
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.25s forwards;
-    }
+    .story { opacity: 0; animation: fadeUp 0.6s ease 0.2s forwards; margin-bottom: 4rem; }
+    .story-card { background: rgba(38,33,92,0.3); border: 0.5px solid rgba(127,119,221,0.2); border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(8px); }
+    .story-card p { font-size: 15px; line-height: 1.9; color: var(--muted); margin-bottom: 1.2rem; }
+    .story-card p:last-child { margin-bottom: 0; }
+    .story-card p strong { color: var(--text); font-weight: 500; }
+    .story-card .quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--pink-lt); border-left: 2px solid var(--pink); padding-left: 1.2rem; margin: 1.5rem 0; line-height: 1.7; }
 
-    h1 em {
-      font-style: italic;
-      color: var(--pink-lt);
-    }
+    .disclaimer { background: rgba(127,119,221,0.08); border: 0.5px solid rgba(127,119,221,0.2); border-radius: 10px; padding: 1rem 1.2rem; margin-bottom: 2rem; font-size: 12px; color: var(--muted); line-height: 1.7; }
+    .disclaimer strong { color: var(--purple-lt); }
 
-    .subhead {
-      font-size: clamp(1rem, 2.5vw, 1.15rem);
-      line-height: 1.75;
-      color: var(--muted);
-      max-width: 520px;
-      margin: 0 auto 2.5rem;
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.35s forwards;
-    }
+    .services { opacity: 0; animation: fadeUp 0.6s ease 0.3s forwards; margin-bottom: 4rem; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 2rem; }
+    .service-card { background: rgba(38,33,92,0.3); border: 0.5px solid rgba(127,119,221,0.2); border-radius: 16px; padding: 1.8rem; backdrop-filter: blur(8px); transition: border-color 0.2s, transform 0.2s; }
+    .service-card:hover { border-color: rgba(127,119,221,0.5); transform: translateY(-2px); }
+    .service-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .service-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--purple-lt); margin-bottom: 0.6rem; }
+    .service-desc { font-size: 13px; line-height: 1.7; color: var(--muted); }
+    .service-tag { display: inline-block; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--pink); border: 0.5px solid rgba(237,147,177,0.3); padding: 3px 10px; border-radius: 20px; margin-top: 1rem; }
+    .service-tag-coming { display: inline-block; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border: 0.5px solid rgba(154,147,184,0.3); padding: 3px 10px; border-radius: 20px; margin-top: 1rem; }
 
-    .subhead strong { color: var(--text); font-weight: 500; }
+    .app-teaser { opacity: 0; animation: fadeUp 0.6s ease 0.4s forwards; margin-bottom: 4rem; }
+    .app-card { background: linear-gradient(135deg, rgba(38,33,92,0.6), rgba(91,26,58,0.3)); border: 0.5px solid rgba(237,147,177,0.25); border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(12px); }
+    .app-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0; }
+    .app-pill { font-size: 12px; color: var(--purple-lt); border: 0.5px solid rgba(127,119,221,0.35); background: rgba(38,33,92,0.5); padding: 6px 14px; border-radius: 20px; }
+    .coming-soon-badge { display: inline-block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(237,147,177,0.15); color: var(--pink); border: 0.5px solid rgba(237,147,177,0.3); padding: 5px 14px; border-radius: 20px; margin-bottom: 1.2rem; }
 
-    /* ── divider ── */
-    .divider {
-      width: 48px;
-      height: 1.5px;
-      background: linear-gradient(90deg, var(--purple), var(--pink));
-      border-radius: 2px;
-      margin: 0 auto 2.5rem;
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.4s forwards;
-    }
+    .waitlist { opacity: 0; animation: fadeUp 0.6s ease 0.5s forwards; margin-bottom: 4rem; }
+    .waitlist-card { background: rgba(38,33,92,0.3); border: 0.5px solid rgba(127,119,221,0.2); border-radius: 16px; padding: 2.5rem; }
+    .waitlist-card p { font-size: 14px; line-height: 1.8; color: var(--muted); margin-bottom: 1.5rem; }
+    .waitlist-card p strong { color: var(--text); font-weight: 500; }
+    .coming-soon-notice { display: inline-flex; align-items: center; gap: 8px; background: rgba(237,147,177,0.1); border: 0.5px solid rgba(237,147,177,0.25); border-radius: 20px; padding: 6px 16px; font-size: 12px; color: var(--pink-lt); margin-bottom: 1.5rem; letter-spacing: 0.04em; }
 
-    /* ── feature pills ── */
-    .pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 3rem;
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.45s forwards;
-    }
+    .form-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+    input[type="email"], input[type="text"] { flex: 1; min-width: 200px; background: rgba(26,24,37,0.8); border: 0.5px solid rgba(127,119,221,0.4); border-radius: 10px; padding: 13px 18px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); outline: none; transition: border-color 0.2s; }
+    input::placeholder { color: var(--muted); }
+    input:focus { border-color: var(--purple); }
+    textarea.form-textarea { width: 100%; background: rgba(26,24,37,0.8); border: 0.5px solid rgba(127,119,221,0.4); border-radius: 10px; padding: 13px 18px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); outline: none; resize: vertical; min-height: 100px; margin-bottom: 12px; transition: border-color 0.2s; }
+    textarea.form-textarea::placeholder { color: var(--muted); }
+    textarea.form-textarea:focus { border-color: var(--purple); }
+    .form-note { font-size: 11px; color: var(--muted); margin-top: 10px; line-height: 1.6; }
+    .success-msg { display: none; text-align: center; font-size: 14px; color: var(--pink-lt); padding: 14px; border: 0.5px solid rgba(237,147,177,0.3); border-radius: 10px; background: rgba(91,26,58,0.2); margin-top: 10px; line-height: 1.7; }
 
-    .pill {
-      font-size: 12px;
-      color: var(--purple-lt);
-      border: 0.5px solid rgba(127,119,221,0.35);
-      background: rgba(38,33,92,0.4);
-      padding: 7px 16px;
-      border-radius: 20px;
-      letter-spacing: 0.03em;
-      backdrop-filter: blur(4px);
-    }
+    .email-waitlist { opacity: 0; animation: fadeUp 0.6s ease 0.55s forwards; margin-bottom: 4rem; }
+    .email-waitlist-card { background: rgba(38,33,92,0.2); border: 0.5px solid rgba(127,119,221,0.15); border-radius: 16px; padding: 2.5rem; text-align: center; }
+    .email-waitlist-card p { font-size: 14px; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.7; }
+    .email-row { display: flex; gap: 10px; max-width: 420px; margin: 0 auto; }
 
-    /* ── email form ── */
-    .form-wrap {
-      width: 100%;
-      max-width: 460px;
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.55s forwards;
-    }
+    footer { border-top: 0.5px solid rgba(127,119,221,0.15); padding: 2.5rem 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; opacity: 0; animation: fadeUp 0.6s ease 0.6s forwards; }
+    footer p { font-size: 11px; color: var(--muted); line-height: 1.7; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 11px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--pink-lt); }
 
-    .form-label {
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 12px;
-      display: block;
-      text-align: center;
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
-    .form-row {
-      display: flex;
-      gap: 10px;
-      width: 100%;
-    }
-
-    input[type="email"] {
-      flex: 1;
-      background: rgba(38,33,92,0.5);
-      border: 0.5px solid rgba(127,119,221,0.4);
-      border-radius: 10px;
-      padding: 14px 18px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.2s;
-      backdrop-filter: blur(8px);
-    }
-
-    input[type="email"]::placeholder { color: var(--muted); }
-    input[type="email"]:focus { border-color: var(--purple); }
-
-    button[type="submit"] {
-      background: linear-gradient(135deg, var(--purple), #5b52c4);
-      border: none;
-      border-radius: 10px;
-      padding: 14px 22px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      color: #fff;
-      cursor: pointer;
-      white-space: nowrap;
-      letter-spacing: 0.04em;
-      transition: opacity 0.2s, transform 0.15s;
-    }
-
-    button[type="submit"]:hover { opacity: 0.88; transform: translateY(-1px); }
-    button[type="submit"]:active { transform: translateY(0); }
-
-    .form-note {
-      font-size: 11px;
-      color: var(--muted);
-      text-align: center;
-      margin-top: 10px;
-      letter-spacing: 0.02em;
-    }
-
-    .success-msg {
-      display: none;
-      text-align: center;
-      font-size: 14px;
-      color: var(--pink-lt);
-      padding: 14px;
-      border: 0.5px solid rgba(237,147,177,0.3);
-      border-radius: 10px;
-      background: rgba(91,26,58,0.2);
-    }
-
-    /* ── about strip ── */
-    .about {
-      width: 100%;
-      margin: 4rem 0 2rem;
-      padding: 2rem;
-      border: 0.5px solid rgba(127,119,221,0.2);
-      border-radius: 16px;
-      background: rgba(38,33,92,0.2);
-      backdrop-filter: blur(8px);
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.65s forwards;
-    }
-
-    .about-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      color: var(--purple-lt);
-      margin-bottom: 0.75rem;
-      font-weight: 700;
-    }
-
-    .about p {
-      font-size: 13.5px;
-      line-height: 1.8;
-      color: var(--muted);
-    }
-
-    .about p strong { color: var(--text); font-weight: 500; }
-
-    /* ── footer ── */
-    footer {
-      width: 100%;
-      padding: 2rem 0 3rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 0.5px solid rgba(127,119,221,0.15);
-      margin-top: auto;
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.75s forwards;
-    }
-
-    footer p { font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
-
-    footer a {
-      font-size: 11px;
-      color: var(--pink);
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    footer a:hover { color: var(--pink-lt); }
-
-    /* ── animations ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── mobile ── */
-    @media (max-width: 480px) {
-      .form-row { flex-direction: column; }
-      button[type="submit"] { width: 100%; }
-      nav { padding: 1.5rem 0 2rem; }
-      footer { flex-direction: column; gap: 10px; text-align: center; }
+    @media (max-width: 520px) {
+      .nav-links { display: none; }
+      .hero-btns { flex-direction: column; }
+      .email-row { flex-direction: column; }
+      footer { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -343,8 +148,8 @@
 
   <!-- NAV -->
   <nav>
-    <a href="/" class="nav-logo" aria-label="The Informed Patient Co. home">
-      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
         <circle cx="32" cy="32" r="30" fill="#26215C"/>
         <circle cx="32" cy="32" r="30" fill="none" stroke="#7F77DD" stroke-width="1.5"/>
         <text x="32" y="27" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#CECBF6" dominant-baseline="central">IP</text>
@@ -353,75 +158,180 @@
       </svg>
       <span class="nav-wordmark">The Informed<br>Patient Co.</span>
     </a>
-    <a href="https://instagram.com/informedpatientco" class="nav-ig" target="_blank" rel="noopener">@informedpatientco</a>
+    <div class="nav-links">
+      <a href="#story" class="nav-link">Our Story</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#app" class="nav-link">App</a>
+      <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <p class="eyebrow">Built by a patient, for patients</p>
-
-    <h1>You deserve to<br>understand your<br><em>own body.</em></h1>
-
-    <p class="subhead">
-      We're building tools to help endo patients <strong>track symptoms</strong>, find specialists who know the difference between <strong>excision and ablation</strong>, connect with pelvic floor therapists, mental health support, and a <strong>community that gets it.</strong>
+    <p class="eyebrow">Patient education &amp; navigation</p>
+    <h1>You are not dramatic.<br>You are <em>undiagnosed.</em></h1>
+    <p class="hero-sub">
+      The Informed Patient Co. exists because <strong>navigating the medical system with endometriosis shouldn't be something you do alone.</strong> We provide education, navigation resources, and tools — built by a patient, for patients.
     </p>
+    <div class="hero-btns">
+      <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
+      <a href="#app" class="btn-secondary">See What's Coming →</a>
+    </div>
+  </section>
 
-    <div class="divider"></div>
+  <div class="divider"></div>
 
-    <div class="pills">
-      <span class="pill">Symptom Tracking</span>
-      <span class="pill">Specialist Finder</span>
-      <span class="pill">Pelvic Floor PTs</span>
-      <span class="pill">Mental Health Resources</span>
-      <span class="pill">Community Q&amp;A</span>
-      <span class="pill">Excision vs. Ablation</span>
+  <!-- STORY -->
+  <section class="story" id="story">
+    <p class="section-label">Why this exists</p>
+    <h2 class="section-title">Madeline's <em>story</em></h2>
+    <div class="story-card">
+      <p>At 28, I had undergone <strong>3 colonoscopies</strong> for symptoms I always assumed were related to Crohn's disease. Every biopsy came back normal. Meanwhile I was dealing with cysts on my ovaries at every ultrasound, painful and heavy periods, and bowel issues that had persisted for over 3 years.</p>
+      <div class="quote">"Manage your stress." That was the answer I kept getting. Until it wasn't good enough anymore.</div>
+      <p>After my colonoscopies, more than one doctor told me everything looked normal and I <strong>shouldn't come back until I was 40.</strong> So I was supposed to just live with this pain for another decade with no answers? That wasn't going to work.</p>
+      <p>It wasn't until I brought up the possibility of endometriosis to my OBGYN that someone finally <strong>validated the frustration and money I had poured into my health.</strong> I had already started pursuing pelvic floor therapy on my own — because I had to figure it out myself.</p>
+      <p>The lack of guidance during that process is what led me here. <strong>Nobody should have to navigate this alone.</strong> That's what The Informed Patient Co. is built to change.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <p class="section-label">How we can help</p>
+    <h2 class="section-title">Education &amp; <em>navigation</em></h2>
+
+    <div class="disclaimer">
+      <strong>Important:</strong> The Informed Patient Co. provides general health education and navigation resources only. We are not a medical or legal practice and do not provide clinical diagnoses, medical advice, or legal counsel. Always consult a qualified healthcare provider for medical decisions.
     </div>
 
-    <div class="form-wrap">
-      <label class="form-label" for="email-input">Join the waitlist</label>
-      <div class="form-row">
-        <input type="email" id="email-input" placeholder="your@email.com" autocomplete="email" required />
-        <button type="submit" onclick="handleSubmit()">Count me in</button>
+    <p style="color:var(--muted); font-size:14px; line-height:1.8; margin-bottom:1.5rem;">Our services are currently in development. Join the waitlist below to be notified when consultations open. Here's what's coming:</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <p class="service-title">Insurance Navigation</p>
+        <p class="service-desc">Understanding your Explanation of Benefits, what coverage denials mean, and how to organize your records to write an effective appeal. You paid for that coverage — let's help you use it.</p>
+        <span class="service-tag-coming">Coming soon</span>
       </div>
-      <p class="form-note">Be the first to access the app and help shape what we build.</p>
-      <div class="success-msg" id="success-msg">
-        You're on the list. We'll be in touch soon. 🤍
+      <div class="service-card">
+        <div class="service-icon">🩺</div>
+        <p class="service-title">Appointment Prep</p>
+        <p class="service-desc">Know what questions to bring before you walk in. We'll help you organize your symptom history and identify the right questions to ask so you leave with the information you need.</p>
+        <span class="service-tag-coming">Coming soon</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <p class="service-title">Provider Finding</p>
+        <p class="service-desc">Resources to help you find OBGYNs who specialize in excision surgery, pelvic floor physical therapists, and mental health providers familiar with chronic illness.</p>
+        <span class="service-tag-coming">Coming soon</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📚</div>
+        <p class="service-title">Endo 101</p>
+        <p class="service-desc">General educational resources about endometriosis — what it is, what treatment options exist, and what terminology means. Knowledge helps you have better conversations with your care team.</p>
+        <span class="service-tag-coming">Coming soon</span>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <div class="about">
-    <p class="about-title">No more googling alone at 2am.</p>
-    <p>
-      Endometriosis affects <strong>1 in 10 women</strong> — yet the average diagnosis takes <strong>7–10 years</strong>. We're changing that by putting the right information, the right providers, and the right community in one place. <strong>The Informed Patient Co.</strong> is patient advocacy built from lived experience.
-    </p>
-  </div>
+  <div class="divider"></div>
+
+  <!-- APP TEASER -->
+  <section class="app-teaser" id="app">
+    <p class="section-label">Coming soon</p>
+    <h2 class="section-title">The <em>app</em> is on its way</h2>
+    <div class="app-card">
+      <span class="coming-soon-badge">In Development</span>
+      <p style="font-size:15px; line-height:1.8; color:var(--muted); margin-bottom:1rem;">We're building a tool designed specifically for endo patients — not a generic period tracker, but something built around how this condition actually works.</p>
+      <div class="app-pills">
+        <span class="app-pill">Daily Check-In</span>
+        <span class="app-pill">Symptom Tracking</span>
+        <span class="app-pill">Specialist Finder</span>
+        <span class="app-pill">Excision vs Ablation Info</span>
+        <span class="app-pill">Pelvic Floor PT Directory</span>
+        <span class="app-pill">Community Q&amp;A</span>
+        <span class="app-pill">Insurance Resources</span>
+        <span class="app-pill">Appointment Prep Tools</span>
+      </div>
+      <p style="font-size:13px; color:var(--muted); line-height:1.7;">Sign up below to be the first to access it — and to help shape what gets built.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- WAITLIST FORM -->
+  <section class="waitlist" id="waitlist">
+    <p class="section-label">Get notified</p>
+    <h2 class="section-title">Join the <em>waitlist</em></h2>
+    <div class="waitlist-card">
+      <span class="coming-soon-notice">🤍 Consultations opening soon</span>
+      <p>We're getting everything in place to serve you properly — including the legal and professional framework to make sure our services are as safe and useful as possible. Fill in your details below and you'll be the first to know when consultations open and when the app launches.</p>
+      <p>Tell us a little about what you're navigating so we can make sure our services are built around what patients actually need.</p>
+
+      <div class="form-row">
+        <input type="text" id="waitlist-name" placeholder="Your name" />
+        <input type="email" id="waitlist-email" placeholder="your@email.com" />
+      </div>
+      <textarea class="form-textarea" id="waitlist-message" placeholder="Tell us a little about what you're navigating — no wrong answers. This helps us build the right resources for you."></textarea>
+      <button class="btn-primary" onclick="handleWaitlist()" style="width:100%; text-align:center;">Join the Waitlist</button>
+      <p class="form-note">We will never share your information. This is a safe space. By joining you'll receive updates on our launch, free educational resources, and early access to the app.</p>
+      <div class="success-msg" id="waitlist-success">You're on the list. Thank you for trusting us with your story — it's helping build something that will matter. We'll be in touch. 🤍</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EMAIL ONLY SIGNUP -->
+  <section class="email-waitlist">
+    <div class="email-waitlist-card">
+      <p class="section-label" style="text-align:center;">Stay in the loop</p>
+      <h2 class="section-title" style="text-align:center;">Free resources, <em>coming soon</em></h2>
+      <p>Sign up for updates, free endo education resources, and early app access. No spam — just things that actually matter for your health journey.</p>
+      <div class="email-row">
+        <input type="email" id="email-only" placeholder="your@email.com" />
+        <button class="btn-primary" onclick="handleEmailOnly()">Count me in</button>
+      </div>
+      <div class="success-msg" id="email-only-success" style="margin-top:12px;">You're in. We'll be in touch with resources and updates. 🤍</div>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 The Informed Patient Co.</p>
-    <a href="https://instagram.com/informedpatientco" target="_blank" rel="noopener">Follow along →</a>
+    <p>© 2026 The Informed Patient Co.<br>General health education only — not medical or legal advice.</p>
+    <div class="footer-links">
+      <a href="https://instagram.com/informedpatientco" target="_blank">Instagram</a>
+      <a href="mailto:hello@informedpatient.co">Contact</a>
+    </div>
   </footer>
 
 </div>
 
 <script>
-  function handleSubmit() {
-    const input = document.getElementById('email-input');
-    const success = document.getElementById('success-msg');
-    if (!input.value || !input.value.includes('@')) {
-      input.style.borderColor = '#ED93B1';
-      input.focus();
+  function handleWaitlist() {
+    const name = document.getElementById('waitlist-name').value;
+    const email = document.getElementById('waitlist-email').value;
+    if (!name || !email || !email.includes('@')) {
+      alert('Please fill in your name and email so we can reach you!');
       return;
     }
-    input.parentElement.style.display = 'none';
-    success.style.display = 'block';
+    document.querySelector('.waitlist-card .form-row').style.display = 'none';
+    document.getElementById('waitlist-message').style.display = 'none';
+    document.querySelector('[onclick="handleWaitlist()"]').style.display = 'none';
+    document.querySelector('.waitlist-card .form-note').style.display = 'none';
+    document.getElementById('waitlist-success').style.display = 'block';
   }
 
-  document.getElementById('email-input').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') handleSubmit();
-  });
+  function handleEmailOnly() {
+    const email = document.getElementById('email-only').value;
+    if (!email || !email.includes('@')) {
+      document.getElementById('email-only').style.borderColor = '#ED93B1';
+      document.getElementById('email-only').focus();
+      return;
+    }
+    document.querySelector('.email-row').style.display = 'none';
+    document.getElementById('email-only-success').style.display = 'block';
+  }
 </script>
 
 </body>
