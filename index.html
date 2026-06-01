@@ -294,30 +294,55 @@
     </div>
   </section>
 
-  <footer>
+   <footer>
     <p>© 2026 The Informed Patient Co.<br>General health education only — not medical or legal advice.</p>
     <div class="footer-links">
       <a href="https://instagram.com/informedpatientco" target="_blank">Instagram</a>
-      <a href="mailto:hello@informedpatient.co">Contact</a>
+      <a href="mailto:madeline@informedpatient.co">Contact</a>
+      <a href="intake.html">Work With Us</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
     </div>
   </footer>
 
 </div>
 
 <script>
-  function handleWaitlist() {
+function handleWaitlist() {
     const name = document.getElementById('waitlist-name').value;
     const email = document.getElementById('waitlist-email').value;
+    const message = document.getElementById('waitlist-message').value;
+
     if (!name || !email || !email.includes('@')) {
-      alert('Please fill in your name and email so we can reach you!');
-      return;
+        alert('Please fill in your name and email so we can reach you!');
+        return;
     }
-    document.querySelector('.waitlist-card .form-row').style.display = 'none';
-    document.getElementById('waitlist-message').style.display = 'none';
-    document.querySelector('[onclick="handleWaitlist()"]').style.display = 'none';
-    document.querySelector('.waitlist-card .form-note').style.display = 'none';
-    document.getElementById('waitlist-success').style.display = 'block';
-  }
+
+    fetch('https://formspree.io/f/mykvqrll', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            name: name,
+            email: email,
+            message: message,
+            _subject: 'New Waitlist Signup — The Informed Patient Co.'
+        })
+    })
+    .then(function(response) {
+        if (response.ok) {
+            document.querySelector('.waitlist-card .form-row').style.display = 'none';
+            document.getElementById('waitlist-message').style.display = 'none';
+            document.querySelector('[onclick="handleWaitlist()"]').style.display = 'none';
+            document.querySelector('.waitlist-card .form-note').style.display = 'none';
+            document.getElementById('waitlist-success').style.display = 'block';
+        } else {
+            alert('Something went wrong. Please email us directly at madeline@informedpatient.co');
+        }
+    })
+    .catch(function() {
+        alert('Something went wrong. Please email us directly at madeline@informedpatient.co');
+    });
+}
 
   function handleEmailOnly() {
     const email = document.getElementById('email-only').value;
