@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Informed Patient Co. | Work With Us</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1a1825;
+            color: #CECBF6;
+            font-family: Georgia, serif;
+            margin: 0 auto;
+            padding: 40px 20px 80px 20px;
+            max-width: 640px;
+        }
+
+        .logo-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 32px;
+        }
+
+        .logo-bar a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-bar span {
+            font-family: Georgia, serif;
+            font-size: 13px;
+            color: #CECBF6;
+            letter-spacing: 0.04em;
+        }
+
+        h1 {
+            color: #CECBF6;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            color: #ED93B1;
+            font-size: 1.1rem;
+            margin-top: 40px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #9a93b8;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .intro-box {
+            background-color: #26215C;
+            border: 1px solid #7F77DD;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 32px;
+        }
+
+        .intro-box p {
+            margin-bottom: 0;
+            color: #CECBF6;
+        }
+
+        .tier-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .tier-card {
+            background-color: #26215C;
+            border: 1px solid #7F77DD;
+            border-radius: 10px;
+            padding: 18px 20px;
+        }
+
+        .tier-name {
+            color: #ED93B1;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .tier-price {
+            color: #CECBF6;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .tier-description {
+            color: #9a93b8;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #ED93B1;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            font-family: Georgia, serif;
+        }
+
+        .required-note {
+            color: #9a93b8;
+            font-size: 0.75rem;
+            margin-left: 4px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="file"],
+        select,
+        textarea {
+            width: 100%;
+            background-color: #26215C;
+            color: #CECBF6;
+            border: 1px solid #7F77DD;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-family: Georgia, serif;
+            font-size: 0.9rem;
+            appearance: none;
+        }
+
+        input[type="file"] {
+            padding: 8px 14px;
+            cursor: pointer;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        select {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%237F77DD' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #ED93B1;
+        }
+
+        .file-note {
+            color: #9a93b8;
+            font-size: 0.78rem;
+            margin-top: 6px;
+        }
+
+        .disclaimer {
+            background-color: #1a1825;
+            border-left: 3px solid #7F77DD;
+            padding: 12px 16px;
+            margin-bottom: 24px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .disclaimer p {
+            font-size: 0.8rem;
+            margin-bottom: 0;
+            color: #9a93b8;
+        }
+
+        .submit-btn {
+            background-color: #ED93B1;
+            color: #1a1825;
+            border: none;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: bold;
+            font-family: Georgia, serif;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .submit-btn:hover {
+            background-color: #e07da0;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #7F77DD;
+            font-size: 0.9rem;
+            text-decoration: none;
+            margin-bottom: 32px;
+        }
+
+        .back-link:hover {
+            color: #CECBF6;
+        }
+
+        footer {
+            margin-top: 64px;
+            padding-top: 20px;
+            border-top: 1px solid #26215C;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.75rem;
+            color: #7F77DD;
+            margin-bottom: 4px;
+        }
+
+        footer a {
+            color: #7F77DD;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Logo -->
+<div class="logo-bar">
+    <a href="index.html">
+        <svg width="36" height="36" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="30" fill="#26215C"/>
+            <circle cx="32" cy="32" r="30" fill="none" stroke="#7F77DD" stroke-width="1.5"/>
+            <text x="32" y="27" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#CECBF6" dominant-baseline="central">IP</text>
+            <line x1="18" y1="40" x2="46" y2="40" stroke="#ED93B1" stroke-width="1.5" stroke-linecap="round"/>
+            <text x="32" y="50" text-anchor="middle" font-family="Georgia, serif" font-size="6" fill="#F4C0D1" dominant-baseline="central" letter-spacing="2">CO.</text>
+        </svg>
+        <span>The Informed Patient Co.</span>
+    </a>
+</div>
+
+<a href="index.html" class="back-link">← Back to home</a>
+
+<!-- Header -->
+<h1>Work With Us</h1>
+<p>You've been navigating this alone long enough. Here's how we can help.</p>
+
+<!-- Intro box -->
+<div class="intro-box">
+    <p>All services are provided via written communication only. We respond within 48 hours. Everything is documented so you always have a record of the guidance you received.</p>
+</div>
+
+<!-- Service tiers -->
+<h2>Our Services</h2>
+<div class="tier-grid">
+    <div class="tier-card">
+        <div class="tier-name">Written Navigation Summary</div>
+        <div class="tier-price">$75–100 flat fee</div>
+        <div class="tier-description">You have one specific question — a denial letter you don't understand, a provider you want to find, an appointment you need to prepare for. Fill out the intake form, attach any relevant documents, and receive a written navigation summary within 48 hours.</div>
+    </div>
+    <div class="tier-card">
+        <div class="tier-name">Ongoing Written Support</div>
+        <div class="tier-price">$150–200 per month</div>
+        <div class="tier-description">You're navigating something complex — a series of insurance appeals, a disability application, or ongoing appointment prep. Monthly retainer for continued written support as your situation evolves.</div>
+    </div>
+    <div class="tier-card">
+        <div class="tier-name">Navigation Call</div>
+        <div class="tier-price">$150–200 per session</div>
+        <div class="tier-description">Available after an established written relationship. A 45–60 minute call to work through your situation together. Only available to existing clients who have completed at least one written navigation session.</div>
+    </div>
+</div>
+
+<!-- Disclaimer -->
+<div class="disclaimer">
+    <p>The Informed Patient Co. provides general health education and navigation support only. We are not a medical practice, law firm, or insurance company. Nothing provided through our services constitutes medical advice, legal advice, or clinical care. Always consult a qualified healthcare provider for medical decisions.</p>
+</div>
+
+<!-- Intake Form -->
+<h2>Intake Form</h2>
+<p>Tell us about what you're navigating. We'll review your submission and follow up within 48 hours.</p>
+
+<form action="https://formspree.io/f/mykvqrll" method="POST" enctype="multipart/form-data">
+
+    <!-- Name -->
+    <div class="form-group">
+        <label for="name">Your name <span class="required-note">*required</span></label>
+        <input type="text" id="name" name="name" required placeholder="First and last name">
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+        <label for="email">Your email <span class="required-note">*required</span></label>
+        <input type="email" id="email" name="email" required placeholder="we'll reply here">
+    </div>
+
+    <!-- Service tier -->
+    <div class="form-group">
+        <label for="service">Which service are you interested in? <span class="required-note">*required</span></label>
+        <select id="service" name="service" required>
+            <option value="">Select a service</option>
+            <option value="Written Navigation Summary ($75-100)">Written Navigation Summary ($75–100)</option>
+            <option value="Ongoing Written Support ($150-200/month)">Ongoing Written Support ($150–200/month)</option>
+            <option value="Navigation Call ($150-200)">Navigation Call ($150–200)</option>
+            <option value="Not sure yet">Not sure yet — help me figure out what I need</option>
+        </select>
+    </div>
+
+    <!-- What are you navigating -->
+    <div class="form-group">
+        <label for="situation">What are you currently navigating? <span class="required-note">*required</span></label>
+        <textarea id="situation" name="situation" required placeholder="Tell us what's going on. For example: I received an insurance denial for my laparoscopy and don't know how to appeal it. Or: I've been in pain for years and don't know where to start finding a specialist."></textarea>
+    </div>
+
+    <!-- What have you tried -->
+    <div class="form-group">
+        <label for="tried">What have you already tried?</label>
+        <textarea id="tried" name="tried" placeholder="For example: I called my insurance company but got nowhere. Or: I've seen three doctors who dismissed me. This helps us avoid duplicating effort."></textarea>
+    </div>
+
+    <!-- Diagnosis status -->
+    <div class="form-group">
+        <label for="diagnosis">What is your current diagnosis status?</label>
+        <select id="diagnosis" name="diagnosis">
+            <option value="">Select one</option>
+            <option value="Diagnosed with endometriosis">Diagnosed with endometriosis</option>
+            <option value="Suspected endometriosis, undiagnosed">Suspected endometriosis, not yet diagnosed</option>
+            <option value="Diagnosed with another condition">Diagnosed with another condition (adenomyosis, PCOS, etc.)</option>
+            <option value="Undiagnosed, seeking answers">Undiagnosed and seeking answers</option>
+            <option value="Prefer not to say">Prefer not to say</option>
+        </select>
+    </div>
+
+    <!-- How did you hear about us -->
+    <div class="form-group">
+        <label for="referral">How did you hear about us?</label>
+        <select id="referral" name="referral">
+            <option value="">Select one</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Reddit">Reddit</option>
+            <option value="Friend or family">Friend or family</option>
+            <option value="Google search">Google search</option>
+            <option value="Facebook group">Facebook group</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+
+    <!-- Document upload -->
+    <div class="form-group">
+        <label for="documents">Upload any relevant documents</label>
+        <input type="file" id="documents" name="documents" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+        <p class="file-note">Optional. You can attach denial letters, EOBs, insurance documents, or anything else that would help us understand your situation. PDF, Word, or image files accepted. You can also reply to our confirmation email with additional documents.</p>
+    </div>
+
+    <!-- Additional notes -->
+    <div class="form-group">
+        <label for="notes">Anything else you want us to know?</label>
+        <textarea id="notes" name="notes" placeholder="Any additional context, questions, or anything else that would help us support you."></textarea>
+    </div>
+
+    <!-- Hidden fields for Formspree -->
+    <input type="hidden" name="_subject" value="New Patient Intake — The Informed Patient Co.">
+    <input type="hidden" name="_next" value="https://informedpatient.co/thank-you.html">
+
+    <button type="submit" class="submit-btn">Submit Intake Form</button>
+
+</form>
+
+<p style="text-align: center; font-size: 0.8rem; color: #9a93b8; margin-top: 16px;">We will never share your information. Submissions are reviewed personally by Madeline within 48 hours.</p>
+
+<!-- Footer -->
+<footer>
+    <p>© 2026 The Informed Patient Co.</p>
+    <p><a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms of Service</a> &nbsp;·&nbsp; <a href="mailto:madeline@informedpatient.co">madeline@informedpatient.co</a></p>
+</footer>
+
+</body>
+</html>
