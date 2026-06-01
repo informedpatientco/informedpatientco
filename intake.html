@@ -290,11 +290,19 @@
     <p>The Informed Patient Co. provides general health education and navigation support only. We are not a medical practice, law firm, or insurance company. Nothing provided through our services constitutes medical advice, legal advice, or clinical care. Always consult a qualified healthcare provider for medical decisions.</p>
 </div>
 
+<!-- Success message — hidden by default -->
+<div id="success-message" style="display: none; text-align: center; padding: 3rem 0;">
+    <div style="font-size: 2.5rem; margin-bottom: 1.5rem;">🤍</div>
+    <h2 style="color: #CECBF6; font-family: Georgia, serif; font-size: 1.8rem; margin-bottom: 1rem;">Your intake form has been received.</h2>
+    <p style="color: #9a93b8; font-size: 0.95rem; line-height: 1.8; margin-bottom: 1rem;">Thank you for trusting us with your story. Madeline will review your submission personally and follow up within 48 hours.</p>
+    <p style="color: #9a93b8; font-size: 0.85rem;">If you have anything else to add, reply to your confirmation email or reach out at <a href="mailto:madeline@informedpatient.co" style="color: #7F77DD;">madeline@informedpatient.co</a></p>
+</div>
+    
 <!-- Intake Form -->
 <h2>Intake Form</h2>
 <p>Tell us about what you're navigating. We'll review your submission and follow up within 48 hours.</p>
 
-<form action="https://formspree.io/f/mykvqrll" method="POST" enctype="multipart/form-data">
+<form id="intake-form" action="https://formspree.io/f/mykvqrll" method="POST" enctype="multipart/form-data">
 
     <!-- Name -->
     <div class="form-group">
@@ -374,7 +382,7 @@
 
     <!-- Hidden fields for Formspree -->
     <input type="hidden" name="_subject" value="New Patient Intake — The Informed Patient Co.">
-    <input type="hidden" name="_next" value="https://informedpatient.co/thank-you.html">
+    <button type="submit" class="submit-btn">Submit Intake Form</button>
 
     <button type="submit" class="submit-btn">Submit Intake Form</button>
 
@@ -388,5 +396,29 @@
     <p><a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms of Service</a> &nbsp;·&nbsp; <a href="mailto:madeline@informedpatient.co">madeline@informedpatient.co</a></p>
 </footer>
 
+
+<script>
+var form = document.getElementById('intake-form');
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var data = new FormData(form);
+    fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+    }).then(function(response) {
+        if (response.ok) {
+            form.style.display = 'none';
+            document.getElementById('success-message').style.display = 'block';
+            window.scrollTo(0, 0);
+        } else {
+            alert('Something went wrong. Please email us directly at madeline@informedpatient.co');
+        }
+    }).catch(function() {
+        alert('Something went wrong. Please email us directly at madeline@informedpatient.co');
+    });
+});
+</script>
+    
 </body>
 </html>
