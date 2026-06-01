@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Informed Patient Co. | Thank You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #1a1825;
+      --bg2: #26215C;
+      --purple: #7F77DD;
+      --purple-lt: #CECBF6;
+      --pink: #ED93B1;
+      --pink-lt: #F4C0D1;
+      --text: #e8e4f0;
+      --muted: #9a93b8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wrapper {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .logo-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 3rem;
+      text-decoration: none;
+    }
+
+    .nav-wordmark {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--purple-lt);
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+      text-align: left;
+    }
+
+    .heart {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--purple-lt);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--pink-lt);
+    }
+
+    p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+
+    p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .card {
+      background: rgba(38,33,92,0.4);
+      border: 0.5px solid rgba(127,119,221,0.25);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: left;
+    }
+
+    .card p {
+      margin-bottom: 0.8rem;
+      font-size: 14px;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--purple), #5b52c4);
+      border: none;
+      border-radius: 10px;
+      padding: 14px 28px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #fff;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+
+    footer {
+      margin-top: 4rem;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      color: var(--pink-lt);
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- Logo -->
+  <a href="index.html" class="logo-bar">
+    <svg width="36" height="36" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="32" r="30" fill="#26215C"/>
+      <circle cx="32" cy="32" r="30" fill="none" stroke="#7F77DD" stroke-width="1.5"/>
+      <text x="32" y="27" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#CECBF6" dominant-baseline="central">IP</text>
+      <line x1="18" y1="40" x2="46" y2="40" stroke="#ED93B1" stroke-width="1.5" stroke-linecap="round"/>
+      <text x="32" y="50" text-anchor="middle" font-family="Georgia, serif" font-size="6" fill="#F4C0D1" dominant-baseline="central" letter-spacing="2">CO.</text>
+    </svg>
+    <span class="nav-wordmark">The Informed<br>Patient Co.</span>
+  </a>
+
+  <span class="heart">🤍</span>
+
+  <h1>Your intake form has been <em>received.</em></h1>
+
+  <p>Thank you for trusting us with your story. We know it takes courage to reach out after years of being dismissed — and we don't take that lightly.</p>
+
+  <p><strong>Madeline will review your submission personally and follow up within 48 hours.</strong></p>
+
+  <div class="card">
+    <p>📋 <strong>What happens next:</strong></p>
+    <p>You'll receive a reply at the email address you provided within 48 hours. If you attached documents, those will be reviewed as part of your intake.</p>
+    <p>If you have anything else to add before we respond — additional documents, context, or questions — reply to your Formspree confirmation email or reach out directly at madeline@informedpatient.co.</p>
+  </div>
+
+  <p style="font-size: 13px; color: var(--muted);">Nobody should have to navigate this alone. That's what we're here for.</p>
+
+  <a href="index.html" class="btn-primary">← Back to home</a>
+
+  <footer>
+    <p>© 2026 The Informed Patient Co.</p>
+    <p style="margin-top: 8px;">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="mailto:madeline@informedpatient.co">Contact</a>
+    </p>
+  </footer>
+
+</div>
+
+</body>
+</html>
